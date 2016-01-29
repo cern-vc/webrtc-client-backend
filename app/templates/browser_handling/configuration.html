@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% set active_page = "browser_handling_configuration" %}
+{% set main_page = "browser_handling" %}
+{% block content %}
+    <h2>Browser Handling
+        <small>Configuration</small>
+    </h2>
+    <h3>Operating Systems</h3>
+
+    {% for operating_system in operating_systems %}
+        <div class="chip">
+            {{ operating_system.name }}
+            <i class="material-icons id_os_{{ operating_system.id }}_trigger">close</i>
+        </div>
+    {% endfor %}
+
+    <a id="open_os_modal_button" class="btn-floating waves-effect waves-light blue os-modal-trigger" href="#modal_os"><i
+            class="material-icons">add</i></a>
+
+    <h3>Browsers</h3>
+
+    {% for browser in browsers %}
+        <div class="chip">
+            {{ browser.name }}
+            <i class="material-icons id_browser_{{ browser.id }}_trigger">close</i>
+        </div>
+    {% endfor %}
+
+    <a class="btn-floating waves-effect waves-light blue browser-modal-trigger" href="#modal_browser"><i
+            class="material-icons">add</i></a>
+
+    <!-- Modal Structure -->
+    <div id="modal_browser" class="modal">
+        <form class="col s12" id="browser_form" method="post" action=".">
+            <div class="modal-content">
+                <h4>Add browser</h4>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ browser_form.csrf_token }}
+                        <input id="name" type="text" class="validate" required="" aria-required="true" name="browser_name">
+                        <label for="name">Browser name</label>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="add_operating_system" class="btn blue waves-effect waves-light" type="submit">
+                    Save
+                </button>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal_os" class="modal">
+        <form class="col s12" id="operating_system_form" method="post" action=".">
+            <div class="modal-content">
+
+                <h4>Add operating system</h4>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ operating_system_form.csrf_token }}
+                        <input id="name" type="text" class="validate" required="" aria-required="true" name="operating_system_name">
+                        <label for="name">Operating system name</label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="add_operating_system" class="btn blue waves-effect waves-light" type="submit">
+                    Save
+                </button>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+    {% for operating_system in operating_systems %}
+        <!-- Modal Structure -->
+        <div id="id_os_{{ operating_system.id }}_modal" class="modal">
+            <form class="col s12" id="delete_operating_system_{{ operating_system.id }}_form" method="post" action=".">
+                <div class="modal-content">
+                    <h4>Remove operating system</h4>
+                    {{ delete_operating_system_form.csrf_token }}
+                    <p>Are you sure you want to delete Operating System <strong>{{ operating_system.name }}</strong></p>
+                    <input type="hidden" name="operating_system_id" value="{{ operating_system.id }}">
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn blue waves-effect waves-light" type="submit">
+                        Save
+                    </button>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    {% endfor %}
+
+    {% for browser in browsers %}
+        <!-- Modal Structure -->
+        <div id="id_browser_{{ browser.id }}_modal" class="modal">
+            <form class="col s12" id="delete_browser_{{ browser.id }}_form" method="post" action=".">
+                <div class="modal-content">
+                    <h4>Remove browser</h4>
+                    {{ delete_browser_form.csrf_token }}
+                    <p>Are you sure you want to delete Browser <strong>"{{ browser.name }}"</strong></p>
+                    <input type="hidden" name="browser_id" value="{{ browser.id }}">
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn blue waves-effect waves-light" type="submit">
+                        Save
+                    </button>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block extra_javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.os-modal-trigger').leanModal();
+            $('.browser-modal-trigger').leanModal();
+
+            $(document).off('click.chip');
+        });
+    </script>
+    <script type=text/javascript>
+        $(function () {
+            {% for operating_system in operating_systems %}
+
+                $('.id_os_{{ operating_system.id }}_trigger').leanModal();
+                $(document).on('click.chip', '.chip .id_os_{{ operating_system.id }}_trigger', function (e) {
+                    console.debug("#id_os_{{ operating_system.id }}_modal");
+                    $("#id_os_{{ operating_system.id }}_modal").openModal();
+                });
+            {% endfor %}
+
+            {% for browser in browsers %}
+
+                $('.id_browser_{{ browser.id }}_trigger').leanModal();
+                $(document).on('click.chip', '.chip .id_browser_{{ browser.id }}_trigger', function (e) {
+                    console.debug("#id_browser_{{ browser.id }}_modal");
+                    $("#id_browser_{{ browser.id }}_modal").openModal();
+                });
+            {% endfor %}
+
+        });
+    </script>
+{% endblock %}

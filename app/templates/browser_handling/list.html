@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% from "forms/macros.html" import render_multicheckbox_field %}
+{% from "forms/macros.html" import render_hidden_field %}
+{% set active_page = "browser_handling_list" %}
+{% set main_page = "browser_handling" %}
+{% block content %}
+    <h1>Browser Handling</h1>
+    <table id="managed_browsers" class="highlight">
+        <thead>
+        <tr>
+            <th data-field="browser">Browser</th>
+            <th data-field="version">Version</th>
+            <th data-field="os">Os</th>
+            <th data-field="disabled">Disabled</th>
+            <th data-field="delete"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for managed_browser in managed_browsers %}
+            <tr>
+                <td><a href="#!"
+                       class="edit_managed_browser_{{ managed_browser.id }}_trigger">{{ managed_browser.browser.name }}</a>
+                </td>
+                <td>{{ managed_browser.version }}</td>
+                <td>
+                    {% for operating_system in managed_browser.operating_systems %}
+                        {{ operating_system.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" id="switch_{{ managed_browser.id }}"
+                                   data-managed-browser="{{ managed_browser.id }}"
+                                   {% if managed_browser.allow_version %}checked="checked"{% endif %}>
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <a class="remove_managed_browser managed_browser_{{ managed_browser.id }}_trigger" href="#!"><i
+                            class="material-icons">clear</i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large blue waves-effect waves-light modal-trigger" href="#managed_browser_modal">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+    {% for managed_browser in managed_browsers %}
+        <!-- Modal Structure -->
+        <div id="managed_browser_{{ managed_browser.id }}_modal" class="modal">
+
+            <form id="delete_managed_browser_{{ managed_browser.id }}_form" method="post" action=".">
+                <div class="modal-content">
+                    <h4>Delete managed browser</h4>
+                    <p>Are you sure you want to delete the managed browser
+                        <strong>{{ managed_browser.browser.name }} {{ managed_browser.version }}</strong></p>
+                </div>
+                <div class="modal-footer">
+                    {{ form.csrf_token }}
+                    <input type="hidden" name="managed_browser_id" value="{{ managed_browser.id }}">
+                    <button type="submit"
+                            class=" modal-action waves-effect waves-green btn blue agree-button">
+                        Delete
+                    </button>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+
+
+            </form>
+        </div>
+
+    {% endfor %}
+
+
+    {% for managed_browser in managed_browsers %}
+        <!-- Modal Structure -->
+        <div id="edit_managed_browser_{{ managed_browser.id }}_modal" class="modal">
+
+            <form id="edit_managed_browser_form" method="post" action=".">
+                <div class="modal-content">
+                    <h4>Edit managed browser</h4>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ edit_managed_browser_form.csrf_token }}
+                            <select id="edit_managed_browser_browser_id" name="edit_managed_browser_browser_id"
+                                    class="validate"
+                                    required="" aria-required="true">
+                                {% for browser in browsers %}
+                                    <option value="{{ browser.id }}"
+                                            {% if managed_browser.browser_id == browser.id %}selected{% endif %}>{{ browser.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="browser">Browser</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="edit_managed_browser_version" id="edit_managed_browser_version" type="text"
+                                   class="validate" required=""
+                                   aria-required="true" value="{{ managed_browser.version }}">
+                            <label for="version">Version</label>
+                        </div>
+                    </div>
+
+                    <h5>Operating Systems</h5>
+                    <p>
+                        {{ render_multicheckbox_field(edit_managed_browser_form.edit_operating_systems, initial_values=managed_browser.operating_systems) }}
+                    </p>
+
+                    <h5>Disabled</h5>
+
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input name="edit_managed_browser_disabled" id="edit_managed_browser_disabled"
+                                   type="checkbox"
+                                   {% if managed_browser.allow_version == true %}checked{% endif %}>
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+
+                    {{ render_hidden_field(edit_managed_browser_form.edit_managed_browser_id, managed_browser.id) }}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" href="#!"
+                            class=" modal-action waves-effect waves-green btn blue agree-button">
+                        Save
+                    </button>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    {% endfor %}
+
+
+    <!-- Modal Structure -->
+    <div id="managed_browser_modal" class="modal">
+
+        <form id="add_managed_browser_form" method="post" action=".">
+            <div class="modal-content">
+                <h4>Add managed browser</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ add_managed_browser_form.csrf_token }}
+                        <select id="add_managed_browser_id" name="add_managed_browser_id" class="validate" required=""
+                                aria-required="true">
+                            {% for browser in browsers %}
+                                <option value="{{ browser.id }}">{{ browser.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="browser">Browser</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="add_managed_browser_version" id="add_managed_browser_version" type="text"
+                               class="validate" required=""
+                               aria-required="true">
+                        <label for="version">Version</label>
+                    </div>
+                </div>
+
+                <h5>Operating Systems</h5>
+
+                <p>
+                    {{ add_managed_browser_form.add_operating_systems }}
+                </p>
+
+                <h5>Disabled</h5>
+
+                <div class="switch">
+                    <label>
+                        Off
+                        <input name="add_managed_browser_disabled" id="add_managed_browser_disabled" type="checkbox">
+                        <span class="lever"></span>
+                        On
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" href="#!" class=" modal-action waves-effect waves-green btn blue agree-button">
+                    Save
+                </button>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+
+
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block extra_javascripts %}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+            $('select').material_select();
+            $('#managed_browsers').DataTable({
+                paging: false,
+                columnDefs: [
+                    {"orderable": false, "targets": 3},
+                    {"orderable": false, "targets": 4}
+                ]
+            });
+
+
+            {% for managed_browser in managed_browsers %}
+
+                $('.managed_browser_{{ managed_browser.id }}_trigger').leanModal();
+                $(document).on('click', '.managed_browser_{{ managed_browser.id }}_trigger', function (e) {
+                    $("#managed_browser_{{ managed_browser.id }}_modal").openModal();
+                });
+
+                $('.edit_managed_browser_{{ managed_browser.id }}_trigger').leanModal();
+                $(document).on('click', '.edit_managed_browser_{{ managed_browser.id }}_trigger', function (e) {
+                    $("#edit_managed_browser_{{ managed_browser.id }}_modal").openModal();
+                });
+
+                $("#switch_{{ managed_browser.id }}").change(function () {
+                    var switch_id = $(this).data("managed-browser");
+
+                    $.getJSON('/browser-handling/_switch_managed_browser_switch', {
+                        managed_browser_id: switch_id,
+                    }, function (data) {
+                       console.debug(data);
+                    });
+                });
+
+            {% endfor %}
+
+
+        });
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+import os
+import readline
+from pprint import pprint
+
+from flask import *
+from app import *
+from app import db
+
+os.environ['PYTHONINSPECT'] = 'True'
+
+app = create_app('config')
+
+with app.app_context():
+    db.create_all()
+exit()

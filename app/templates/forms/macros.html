@@ -1,0 +1,38 @@
+{% macro render_field(field) %}
+    <div class="form_field">
+        {{ field.label(class="label") }}
+        {% if field.errors %}
+            {% set css_class = 'has_error ' + kwargs.pop('class', '') %}
+            {{ field(class=css_class, **kwargs) }}
+            <ul class="errors">{% for error in field.errors %}
+                <li>{{ error|e }}</li>{% endfor %}</ul>
+        {% else %}
+            {{ field(**kwargs) }}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_multicheckbox_field(field, initial_values=[]) %}
+    {% if field.errors %}
+        {% set css_class = 'has_error ' + kwargs.pop('class', '') %}
+        {{ field(class=css_class, **kwargs) }}
+        <ul class="errors">{% for error in field.errors %}
+            <li>{{ error|e }}</li>{% endfor %}</ul>
+    {% else %}
+        {% for subfield in field %}
+            <input id="{{ subfield.id }}" name="{{ subfield.name }}" type="checkbox"
+                    {% for initial_value in initial_values %}
+                        {% if initial_value.id ==  subfield._value()|int %}
+                   checked
+                        {% endif %}
+                    {% endfor %}
+                   value="{{ subfield._value() }}">
+            <label for="{{ subfield.id }}">{{ subfield.label }}</label>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_hidden_field(field, initial_value) %}
+        <input id="{{ field.id }}" name="{{ field.name }}" type="hidden"
+               value="{{ initial_value|int }}">
+{% endmacro %}

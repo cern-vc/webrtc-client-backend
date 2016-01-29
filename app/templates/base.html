@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>{% block title %}WebRTC Client Manager{% endblock %}</title>
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/main.css"/>
+        <link rel="stylesheet" href="/static/css/toolbar.css"/>
+        <link rel="stylesheet" href="/static/bower_components/Materialize/dist/css/materialize.min.css"
+              media="screen,projection"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+    {% endblock %}
+    {% block script %}
+        <script src="/static/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+        <script src="/static/js/main.js" type="text/javascript"></script>
+        <script src="/static/bower_components/Materialize/dist/js/materialize.min.js" type="text/javascript"></script>
+    {% endblock %}
+</head>
+<body>
+{% set navigation_bar = [
+    (url_for('main.about'), 'main', 'help'),
+    (url_for('browser_handling.list_all'), 'browser_handling', 'computer'),
+] -%}
+{% set active_page = active_page|default('about') -%}
+
+{% from "cern_toolbar/macros.html" import render_cern_toolbar %}
+{{ render_cern_toolbar() }}
+<header>
+    <nav class="blue">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <a href="#" class="brand-logo">WebRTC Client Manager</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% for href, id, caption in navigation_bar %}
+                        <li {% if id == main_page %} class="active"{% endif %}><a href="{{ href|e }}"><i
+                                class="material-icons">{{ caption|e }}</i></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div id="header">{% block header %}{% endblock %}</div>
+        <div id="messages-wrap">
+            <div id="messages">
+                {% for category, msg in get_flashed_messages(with_categories=true) %}
+                    <div class="chip light-green lighten-1">
+                        <span class="message flash-{{ category }}">{{ msg }}</span>
+                        <i class="material-icons">close</i>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">{% block footer %}{% endblock %}</div>
+    </div>
+</main>
+
+
+<ul id="slide-out" class="side-nav fixed" style="left: 0px;">
+    <li class="bold {% if 'about' == active_page %}active{% endif %} side-nav-header"><a href="{{ url_for('main.about') }}"
+                                                                         class="waves-effect waves-light"><i
+            class="material-icons">help</i> About</a>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a
+                    class="collapsible-header  waves-effect waves-light
+                    {% if 'browser_handling_list' == active_page %}active{% endif %}
+                    {% if 'browser_handling_configuration' == active_page %}active{% endif %}"><i
+                    class="material-icons">computer</i> Browser
+                Handling</a>
+                <div class="collapsible-body" style="">
+                    <ul>
+                        <li class="{% if 'browser_handling_list' == active_page %}active{% endif %}"><a
+                                href="{{ url_for('browser_handling.list_all') }}">Managed Browsers List</a></li>
+                        <li class="{% if 'browser_handling_configuration' == active_page %}active{% endif %}"><a
+                                href="{{ url_for('browser_handling.configuration') }}">Configuration</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+<script type="text/javascript">
+    $(".button-collapse").sideNav();
+</script>
+{% block extra_javascripts %}{% endblock %}
+</html>
