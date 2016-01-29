@@ -1,16 +1,16 @@
-{% macro render_cern_toolbar() %}
+{% macro render_cern_toolbar(current_user) %}
     <div id="cern-toolbar">
         <h1><a href="http://cern.ch" title="CERN">CERN <span>Accelerating science</span></a></h1>
 
         <ul class="cern-signedin">
-            {% if session and session.user %}
+            {% if current_user.is_authenticated or IS_LOCAL_INSTALLATION %}
                 <li class="cern-accountlinks"><span>Signed in as: <a class="account" href="http://cern.ch/account"
-                                                                     title="Signed in as {{ session.user }} ({{ session.nickname }})">{{ session.user }}
-                    ({{ session.nickname }})</a> </span>
-                    <a class="cern-signout" href="{{ url_for('logout') }}" title="Sign out of your account">Sign out</a>
+                                                                     title="Signed in as {{ current_user.first_name }} {{ current_user.last_name }} ({{ current_user.username }})">{{ current_user.first_name }} {{ current_user.last_name }} ({{ current_user.first_name }})</a> </span>
+                    <a class="cern-signout" href="{{ url_for("users.logout") }}" title="Sign out of your account">Sign
+                        out</a>
                 </li>
             {% else %}
-                <li class="cern-accountlinks"><a class="cern-account" href="/admin/login"
+                <li class="cern-accountlinks"><a class="cern-account" href="{{ url_for('cern_oauth.login') }}"
                                                  title="Sign in to your CERN account">Sign in</a></li>
             {% endif %}
             <li><a class="cern-directory" href="http://cern.ch/directory"

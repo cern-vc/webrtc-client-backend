@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% set active_page = "api_auth_user_list" %}
+{% set main_page = "api_auth" %}
+{% block content %}
+    <h1>Api auth users</h1>
+    <table id="managed_browsers" class="highlight">
+        <thead>
+        <tr>
+            <th data-field="username">Username</th>
+{#            <th data-field="domain">Domain</th>#}
+            <th data-field="api">Api Key</th>
+            <th data-field="generate">Secret</th>
+            <th data-field="expiration">Expiration Date</th>
+            <th data-field="delete"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+{#                <td>{{ user.domain }}</td>#}
+                <td><input width="200px" type="text" readonly="readonly" value="{{ user.api_key }}"/></td>
+                <td>
+                    <input width="200px" type="password" readonly="readonly" value="{{ user.api_secret }}"/>
+                </td>
+                <td>
+                    {% if user.expiration_date %}{{ user.expiration_date.strftime('%Y-%m-%d %H:%m') }}{% endif %}
+                </td>
+                <td>
+                    <a class="remove_user user_{{ user.id }}_trigger" href="#!"><i
+                            class="material-icons">clear</i>
+                    </a>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% for user in users %}
+        <!-- Modal Structure -->
+        <div id="user_{{ user.id }}_modal" class="modal">
+
+            <form id="delete_user_{{ user.id }}_form" method="post" action=".">
+                <div class="modal-content">
+                    <h4>Delete user</h4>
+                    <p>Are you sure you want to delete the user
+                        <strong>{{ user.username }}</strong></p>
+                </div>
+                <div class="modal-footer">
+                    {{ form.csrf_token }}
+                    <input type="hidden" name="delete_user_id" value="{{ user.id }}">
+                    <button type="submit"
+                            class=" modal-action waves-effect waves-green btn blue agree-button">
+                        Delete
+                    </button>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+
+
+            </form>
+        </div>
+
+    {% endfor %}
+
+    <!-- Modal Structure -->
+    <div id="add_user_modal" class="modal">
+
+        <form id="add_user_form" method="post" action=".">
+            <div class="modal-content">
+                <h4>Add user</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="add_user_username" id="add_user_username" type="text"
+                               class="validate" required=""
+                               aria-required="true">
+                        <label for="add_user_username">Username</label>
+                    </div>
+                </div>
+            </div>
+            {{ add_user_form.csrf_token }}
+            <div class="modal-footer">
+                <button type="submit" href="#!" class=" modal-action waves-effect waves-green btn blue agree-button">
+                    Save
+                </button>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+
+
+        </form>
+    </div>
+
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large blue waves-effect waves-light modal-trigger" href="#add_user_modal">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+{% endblock %}
+
+{% block extra_javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.modal-trigger').leanModal();
+            {% for user in users %}
+
+                $('.user_{{ user.id }}_trigger').leanModal();
+                $(document).on('click', '.user_{{ user.id }}_trigger', function (e) {
+                    $("#user_{{ user.id }}_modal").openModal();
+                });
+
+            {% endfor %}
+
+        });
+    </script>
+{% endblock %}

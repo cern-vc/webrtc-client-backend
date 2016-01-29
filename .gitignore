@@ -46,9 +46,9 @@ nosetests.xml
 coverage.xml
 *,cover
 
-# Translations
-*.mo
-*.pot
+## Translations
+#*.mo
+#*.pot
 
 # Django stuff:
 *.log
@@ -61,7 +61,26 @@ docs/_build/
 target/
 
 .idea/
+node_modules/
 bower_components/
-config.py
 app.db
 testapp.db
+
+*.DS_Store
+app/frontend_app/development/*
+server.crt
+server.csr
+server.key
+server.key.org
+*test_app.db
+tmp/
+docs/build/
+
+fabfile_config.py
+libs/
+/.env
+.webassets-cache/
+
+packed.css
+packed.js
+/.project

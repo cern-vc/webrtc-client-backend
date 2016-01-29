@@ -1,0 +1,52 @@
+{% macro render_add_browser_form(form, prefix) %}
+    <!-- Add browser form -->
+    <div id="modal_browser" class="modal">
+        <form class="col s12" id="{{ prefix }}" method="post" action="." name="{{ prefix }}">
+            <div class="modal-content">
+                <h4>{{ _('Add browser') }}</h4>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ form.csrf_token }}
+                        <input id="{{ prefix }}-browser_name" type="text" class="validate" required="" aria-required="true"
+                               name="{{ prefix }}-browser_name">
+                        <label for="{{ prefix }}-browser_name">{{ _('Browser name') }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="add_browser" class="btn blue waves-effect waves-light" type="submit">
+                    {{ _('Save') }}
+                </button>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ _('Cancel') }}</a>
+            </div>
+        </form>
+    </div>
+{% endmacro %}
+
+
+{% macro render_add_os_form(form, prefix) %}
+    <!-- Add browser form -->
+    <div id="modal_os" class="modal">
+        <form class="col s12" id="{{ prefix }}" method="post" action="." name="{{ prefix }}">
+            <div class="modal-content">
+                <h4>{{ _('Add Operating System') }}</h4>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ form.csrf_token }}
+                        <input id="{{ prefix }}-operating_system_name" type="text" class="validate" required="" aria-required="true"
+                               name="{{ prefix }}-operating_system_name">
+                        <label for="{{ prefix }}-operating_system_name">{{ _('Operating system name') }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="add_browser" class="btn blue waves-effect waves-light" type="submit">
+                    {{ _('Save') }}
+                </button>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ _('Cancel') }}</a>
+            </div>
+        </form>
+    </div>
+{% endmacro %}

@@ -1,0 +1,26 @@
+web:
+  restart: always
+  build: .
+  env_file: .env
+  volumes:
+    - './app:/opt/app-root/src/app'
+  links:
+    - postgres:postgres
+  ports:
+    - 8080:8080
+    - 8081:443
+  command: python app/main.py
+
+
+data:
+  image: postgres:latest
+  volumes:
+    - /var/lib/postgresql
+  command: "true"
+
+postgres:
+    image: 'postgres:9.4'
+    volumes_from:
+      - data
+    ports:
+      - 5432:5432

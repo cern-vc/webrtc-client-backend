@@ -1,0 +1,148 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-04 14:30+0100\n"
+"PO-Revision-Date: 2016-03-04 14:12+0100\n"
+"Last-Translator: \n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: app/templates/base.html:76
+#: app/templates/browser_handling/configuration.html:8
+msgid "Browser Handling"
+msgstr ""
+
+#: app/templates/base.html:80
+msgid "Managed Browsers List"
+msgstr ""
+
+#: app/templates/base.html:82
+#: app/templates/browser_handling/configuration.html:9
+msgid "Configuration"
+msgstr ""
+
+#: app/templates/base.html:93
+msgid "API Auth Management"
+msgstr ""
+
+#: app/templates/base.html:97
+msgid "List users"
+msgstr ""
+
+#: app/templates/base.html:106
+msgid "Help"
+msgstr ""
+
+#: app/templates/home.html:5
+msgid "About"
+msgstr "Acerca de"
+
+#: app/templates/home.html:6
+msgid "From this site you can configure the WebRTC Client parameters."
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:11
+#: app/templates/browser_handling/list.html:116
+#: app/templates/browser_handling/list.html:181
+msgid "Operating Systems"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:23
+msgid "Browsers"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:44
+msgid "Remove operating system"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:46
+msgid "Are you sure you want to delete Operating System"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:52
+#: app/templates/browser_handling/configuration.html:74
+#: app/templates/browser_handling/list.html:140
+#: app/templates/browser_handling/list.html:200
+msgid "Save"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:54
+#: app/templates/browser_handling/configuration.html:76
+#: app/templates/browser_handling/list.html:75
+#: app/templates/browser_handling/list.html:142
+#: app/templates/browser_handling/list.html:202
+msgid "Cancel"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:66
+msgid "Remove browser"
+msgstr ""
+
+#: app/templates/browser_handling/configuration.html:68
+msgid "Are you sure you want to delete Browser"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:11
+#: app/templates/browser_handling/list.html:103
+#: app/templates/browser_handling/list.html:168
+msgid "Browser"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:12
+#: app/templates/browser_handling/list.html:112
+#: app/templates/browser_handling/list.html:177
+msgid "Version"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:13
+msgid "Os"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:14
+msgid "Allow version"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:34
+msgid "No"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:39
+msgid "Yes"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:64
+msgid "Delete managed browser"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:65
+msgid "Are you sure you want to delete the managed browser"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:73
+msgid "Delete"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:91
+msgid "Edit managed browser"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:121
+#: app/templates/browser_handling/list.html:187
+msgid "Disabled"
+msgstr ""
+
+#: app/templates/browser_handling/list.html:158
+msgid "Add managed browser"
+msgstr ""
+

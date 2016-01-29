@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>app.api.resources package &mdash; WebRTC Client Backend 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="WebRTC Client Backend 1.0 documentation" href="index.html" />
+    <link rel="up" title="app.api package" href="app.api.html" />
+    <link rel="next" title="app.api_auth package" href="app.api_auth.html" />
+    <link rel="prev" title="app.api package" href="app.api.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="app-api-resources-package">
+<h1>app.api.resources package<a class="headerlink" href="#app-api-resources-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.api.resources.api_auth">
+<span id="app-api-resources-api-auth-module"></span><h2>app.api.resources.api_auth module<a class="headerlink" href="#module-app.api.resources.api_auth" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.api.resources.api_auth.AuthApi">
+<em class="property">class </em><code class="descclassname">app.api.resources.api_auth.</code><code class="descname">AuthApi</code><a class="headerlink" href="#app.api.resources.api_auth.AuthApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_restful.Resource</span></code></p>
+<p>Class that manages the browser handling API</p>
+<dl class="attribute">
+<dt id="app.api.resources.api_auth.AuthApi.endpoint">
+<code class="descname">endpoint</code><em class="property"> = 'AuthApi'</em><a class="headerlink" href="#app.api.resources.api_auth.AuthApi.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.api.resources.api_auth.AuthApi.mediatypes">
+<code class="descname">mediatypes</code><span class="sig-paren">(</span><em>resource_cls</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api.resources.api_auth.AuthApi.mediatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.api.resources.api_auth.AuthApi.methods">
+<code class="descname">methods</code><em class="property"> = ['POST']</em><a class="headerlink" href="#app.api.resources.api_auth.AuthApi.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.api.resources.api_auth.AuthApi.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.api.resources.api_auth.AuthApi.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to make a request to the CERN Oauth2 API Url and retrieve some user information with the given user token.
+If the token is not valid means that the user is not valid and will be rejected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The generated token for the user or an error.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api.resources.browser_handling">
+<span id="app-api-resources-browser-handling-module"></span><h2>app.api.resources.browser_handling module<a class="headerlink" href="#module-app.api.resources.browser_handling" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.api.resources.browser_handling.BrowserHandlingApi">
+<em class="property">class </em><code class="descclassname">app.api.resources.browser_handling.</code><code class="descname">BrowserHandlingApi</code><a class="headerlink" href="#app.api.resources.browser_handling.BrowserHandlingApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_restful.Resource</span></code></p>
+<p>Class that manages the browser handling API</p>
+<dl class="attribute">
+<dt id="app.api.resources.browser_handling.BrowserHandlingApi.endpoint">
+<code class="descname">endpoint</code><em class="property"> = 'BrowserHandlingApi'</em><a class="headerlink" href="#app.api.resources.browser_handling.BrowserHandlingApi.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.api.resources.browser_handling.BrowserHandlingApi.mediatypes">
+<code class="descname">mediatypes</code><span class="sig-paren">(</span><em>resource_cls</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api.resources.browser_handling.BrowserHandlingApi.mediatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.api.resources.browser_handling.BrowserHandlingApi.methods">
+<code class="descname">methods</code><em class="property"> = ['POST']</em><a class="headerlink" href="#app.api.resources.browser_handling.BrowserHandlingApi.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.api.resources.browser_handling.BrowserHandlingApi.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.api.resources.browser_handling.BrowserHandlingApi.post" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Gets the browser name and version and tells if the user should be redirected.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A JSON response telling if the user should be redirected to the Vidyoportal</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api.resources.examples">
+<span id="app-api-resources-examples-module"></span><h2>app.api.resources.examples module<a class="headerlink" href="#module-app.api.resources.examples" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.api.resources.examples.HelloWorld">
+<em class="property">class </em><code class="descclassname">app.api.resources.examples.</code><code class="descname">HelloWorld</code><a class="headerlink" href="#app.api.resources.examples.HelloWorld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_restful.Resource</span></code></p>
+<p>Example class to access an unprotected API</p>
+<dl class="attribute">
+<dt id="app.api.resources.examples.HelloWorld.endpoint">
+<code class="descname">endpoint</code><em class="property"> = 'ExampleApi'</em><a class="headerlink" href="#app.api.resources.examples.HelloWorld.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.api.resources.examples.HelloWorld.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.api.resources.examples.HelloWorld.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return example JSON</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">example JSON</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app.api.resources.examples.HelloWorld.mediatypes">
+<code class="descname">mediatypes</code><span class="sig-paren">(</span><em>resource_cls</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api.resources.examples.HelloWorld.mediatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.api.resources.examples.HelloWorld.methods">
+<code class="descname">methods</code><em class="property"> = ['GET']</em><a class="headerlink" href="#app.api.resources.examples.HelloWorld.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api.resources">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app.api.resources" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">app.api.resources package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-app.api.resources.api_auth">app.api.resources.api_auth module</a></li>
+<li><a class="reference internal" href="#module-app.api.resources.browser_handling">app.api.resources.browser_handling module</a></li>
+<li><a class="reference internal" href="#module-app.api.resources.examples">app.api.resources.examples module</a></li>
+<li><a class="reference internal" href="#module-app.api.resources">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">app</a><ul>
+  <li><a href="app.html">app package</a><ul>
+  <li><a href="app.api.html">app.api package</a><ul>
+      <li>Previous: <a href="app.api.html" title="previous chapter">app.api package</a></li>
+      <li>Next: <a href="app.api_auth.html" title="next chapter">app.api_auth package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.api.resources.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CERN.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/app.api.resources.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,25 @@
+stages:
+  - test
+  - deploy
+
+test:
+  image: renefs87/docker-cc7-python
+  stage: test
+  tags:
+    - qa
+    - docker
+    - backend
+  script:
+    - pip install -r requirements.txt
+    - pip install Fabric
+    - npm install
+    - py.test --cov=app tests/
+
+build_in_openshift:
+  image: cern/cc7-base
+  stage: deploy
+  variables:
+    PAYLOAD: '{"git": {"ref": "${CI_BUILD_REF_NAME}"},"type": "git"}'
+    CONTENT_TYPE: 'Content-Type: application/json'
+  script:
+  - curl -k -X POST -H "${CONTENT_TYPE}" -d "${PAYLOAD}" ${WEBHOOK}

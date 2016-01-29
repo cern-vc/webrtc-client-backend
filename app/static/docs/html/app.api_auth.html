@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>app.api_auth package &mdash; WebRTC Client Backend 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="WebRTC Client Backend 1.0 documentation" href="index.html" />
+    <link rel="up" title="app package" href="app.html" />
+    <link rel="next" title="app.browser_handling package" href="app.browser_handling.html" />
+    <link rel="prev" title="app.api.resources package" href="app.api.resources.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="app-api-auth-package">
+<h1>app.api_auth package<a class="headerlink" href="#app-api-auth-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.api_auth.decorators">
+<span id="app-api-auth-decorators-module"></span><h2>app.api_auth.decorators module<a class="headerlink" href="#module-app.api_auth.decorators" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.api_auth.decorators.requires_api_key">
+<code class="descclassname">app.api_auth.decorators.</code><code class="descname">requires_api_key</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.decorators.requires_api_key" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Checks if the provided API Key secret is valid.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> &#8211; View or API method</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">401 error if the user is unauthorized</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api_auth.forms">
+<span id="app-api-auth-forms-module"></span><h2>app.api_auth.forms module<a class="headerlink" href="#module-app.api_auth.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.api_auth.forms.AddUserForm">
+<em class="property">class </em><code class="descclassname">app.api_auth.forms.</code><code class="descname">AddUserForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.forms.AddUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to add an API user</p>
+<dl class="attribute">
+<dt id="app.api_auth.forms.AddUserForm.add_user_username">
+<code class="descname">add_user_username</code><em class="property"> = &lt;UnboundField(StringField, ('Username', [&lt;wtforms.validators.DataRequired object at 0x10dbe7990&gt;]), {})&gt;</em><a class="headerlink" href="#app.api_auth.forms.AddUserForm.add_user_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.api_auth.forms.DeleteUserForm">
+<em class="property">class </em><code class="descclassname">app.api_auth.forms.</code><code class="descname">DeleteUserForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.forms.DeleteUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to delete an API user</p>
+<dl class="attribute">
+<dt id="app.api_auth.forms.DeleteUserForm.delete_user_id">
+<code class="descname">delete_user_id</code><em class="property"> = &lt;UnboundField(HiddenField, ('User ID', [&lt;wtforms.validators.DataRequired object at 0x10dbdd150&gt;]), {})&gt;</em><a class="headerlink" href="#app.api_auth.forms.DeleteUserForm.delete_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="app.api_auth.forms.process_user_add_form">
+<code class="descclassname">app.api_auth.forms.</code><code class="descname">process_user_add_form</code><span class="sig-paren">(</span><em>form_data={}</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.forms.process_user_add_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>User add validation process. Checks if the add form is valid and creates a user.
+:param form_data:
+:return: The form or True</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.api_auth.forms.process_user_delete_form">
+<code class="descclassname">app.api_auth.forms.</code><code class="descname">process_user_delete_form</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.forms.process_user_delete_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>User delete validation process. If the form is validated, the user will be removed
+:return: The form</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api_auth.model">
+<span id="app-api-auth-model-module"></span><h2>app.api_auth.model module<a class="headerlink" href="#module-app.api_auth.model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.api_auth.model.ApiUser">
+<em class="property">class </em><code class="descclassname">app.api_auth.model.</code><code class="descname">ApiUser</code><span class="sig-paren">(</span><em>username=''</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.model.ApiUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>ApiUser model</p>
+<dl class="attribute">
+<dt id="app.api_auth.model.ApiUser.api_key">
+<code class="descname">api_key</code><a class="headerlink" href="#app.api_auth.model.ApiUser.api_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.api_auth.model.ApiUser.api_secret">
+<code class="descname">api_secret</code><a class="headerlink" href="#app.api_auth.model.ApiUser.api_secret" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.api_auth.model.ApiUser.expiration_date">
+<code class="descname">expiration_date</code><a class="headerlink" href="#app.api_auth.model.ApiUser.expiration_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.api_auth.model.ApiUser.generate_auth_token">
+<code class="descname">generate_auth_token</code><span class="sig-paren">(</span><em>expiration=3600</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.model.ApiUser.generate_auth_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an auth token for the current user.
+:param expiration: Time inseconds
+:return:  The serialized token</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="app.api_auth.model.ApiUser.id">
+<code class="descname">id</code><a class="headerlink" href="#app.api_auth.model.ApiUser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.api_auth.model.ApiUser.username">
+<code class="descname">username</code><a class="headerlink" href="#app.api_auth.model.ApiUser.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="app.api_auth.model.ApiUser.verify_auth_token">
+<em class="property">classmethod </em><code class="descname">verify_auth_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.model.ApiUser.verify_auth_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the token is valid and if so, returns its associated user.
+:param token: Token string
+:return: The user or None</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api_auth.views">
+<span id="app-api-auth-views-module"></span><h2>app.api_auth.views module<a class="headerlink" href="#module-app.api_auth.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.api_auth.views.list_all">
+<code class="descclassname">app.api_auth.views.</code><code class="descname">list_all</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.api_auth.views.list_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>List users view
+:return:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.api_auth">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app.api_auth" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">app.api_auth package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-app.api_auth.decorators">app.api_auth.decorators module</a></li>
+<li><a class="reference internal" href="#module-app.api_auth.forms">app.api_auth.forms module</a></li>
+<li><a class="reference internal" href="#module-app.api_auth.model">app.api_auth.model module</a></li>
+<li><a class="reference internal" href="#module-app.api_auth.views">app.api_auth.views module</a></li>
+<li><a class="reference internal" href="#module-app.api_auth">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">app</a><ul>
+  <li><a href="app.html">app package</a><ul>
+      <li>Previous: <a href="app.api.resources.html" title="previous chapter">app.api.resources package</a></li>
+      <li>Next: <a href="app.browser_handling.html" title="next chapter">app.browser_handling package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.api_auth.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CERN.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/app.api_auth.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

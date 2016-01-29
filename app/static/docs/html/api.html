@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API &mdash; WebRTC Client Backend 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="WebRTC Client Backend 1.0 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api">
+<span id="id1"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p>This is the API</p>
+<ul class="simple">
+<li><a class="reference internal" href="#browser-handling-api">browser_handling API</a></li>
+<li><a class="reference internal" href="#auth-api">auth API</a></li>
+</ul>
+<p>This API returns always JSON objects. The additional parameters expected can be sent as GET or POST requests.</p>
+<p>In case of successful result, the JSON dict will contain the key &#8216;success&#8217; with the correspondent value. In case of error, the JSON dict will contain the key &#8216;error&#8217; with a description of the error as value.</p>
+<div class="section" id="browser-handling">
+<span id="browser-handling-api"></span><h2>Browser Handling<a class="headerlink" href="#browser-handling" title="Permalink to this headline">¶</a></h2>
+<p>The entry point for this API is:</p>
+<div class="highlight-python"><div class="highlight"><pre>/api/v1.0
+</pre></div>
+</div>
+<div class="section" id="check-allowed-browser">
+<h3>Check allowed browser<a class="headerlink" href="#check-allowed-browser" title="Permalink to this headline">¶</a></h3>
+<p>Checks whether a browser version should be allowed or not.</p>
+<ul>
+<li><p class="first">Function name: <strong>browsers</strong></p>
+</li>
+<li><p class="first">Content-type: application/json</p>
+</li>
+<li><dl class="first docutils">
+<dt>Parameters (JSON encoded):</dt>
+<dd><ul class="first last simple">
+<li><strong>browser_name</strong>: Name of the browser (string)</li>
+<li><strong>browser_version</strong>: Version of the browser (int)</li>
+<li><strong>and_higher</strong>: True if higher versions should be redirected (boolean)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>URL specification:</p>
+<div class="highlight-python"><div class="highlight"><pre>/browser/
+</pre></div>
+</div>
+<p>Allowed methods:
+- POST</p>
+<p><strong>Example</strong></p>
+<p>URL:</p>
+<div class="highlight-python"><div class="highlight"><pre>/api/v1.0/browser/
+</pre></div>
+</div>
+<p>Headers:</p>
+<div class="highlight-python"><div class="highlight"><pre>Accept: application/json
+Content-Type: application/json
+</pre></div>
+</div>
+<p>Content:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;browser_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chrome&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;browser_version&quot;</span><span class="p">:</span> <span class="s2">&quot;48&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;and_higher&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>RESULT:</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+&quot;should_redirect&quot;: true,
+&quot;system_info&quot;: {
+    &quot;browser&quot;: {
+        &quot;name&quot;: &quot;Chrome&quot;,
+        &quot;version&quot;: &quot;48&quot;
+    },
+    &quot;os&quot;: {
+        &quot;name&quot;: &quot;Mac OS&quot;,
+        &quot;version&quot;: &quot;X 10.11.2&quot;
+    }
+}
+</pre></div>
+</div>
+<p>}</p>
+<p>Notes: Remember to add the final trailing slash.</p>
+</div>
+</div>
+<div class="section" id="api-auth">
+<span id="auth-api"></span><h2>API Auth<a class="headerlink" href="#api-auth" title="Permalink to this headline">¶</a></h2>
+<p>The entry point for this API is:</p>
+<div class="highlight-python"><div class="highlight"><pre>/api/v1.0/auth
+</pre></div>
+</div>
+<div class="section" id="get-api-jwt">
+<h3>Get API JWT<a class="headerlink" href="#get-api-jwt" title="Permalink to this headline">¶</a></h3>
+<p>Uses the CERN Oauth2 token to verify the user&#8217;s identity and logs him/her in the application by returning a limited time JWT encoded in base64.</p>
+<ul>
+<li><p class="first">Function name: <strong>token</strong></p>
+</li>
+<li><p class="first">Content-type: application/json</p>
+</li>
+<li><dl class="first docutils">
+<dt>Parameters (JSON encoded):</dt>
+<dd><ul class="first last simple">
+<li><strong>token</strong>: CERN Oauth2 token</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Returns: A JWT base64 encoded.</p>
+</li>
+</ul>
+<p>URL specification:</p>
+<div class="highlight-python"><div class="highlight"><pre>/token/
+</pre></div>
+</div>
+<p>Allowed methods:
+- POST</p>
+<p><strong>Example</strong></p>
+<p>URL:</p>
+<div class="highlight-python"><div class="highlight"><pre>/api/v1.0/auth/token/
+</pre></div>
+</div>
+<p>Headers:</p>
+<div class="highlight-python"><div class="highlight"><pre>Accept: application/json
+Content-Type: application/json
+</pre></div>
+</div>
+<p>Content:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;This is the Oauth2 CERN Token&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>RESULT:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="s2">&quot;This is the JSON Web Token base64 encoded&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Authentication failed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Authorization has been denied for this request.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notes: Remember to add the final trailing slash.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API</a><ul>
+<li><a class="reference internal" href="#browser-handling">Browser Handling</a><ul>
+<li><a class="reference internal" href="#check-allowed-browser">Check allowed browser</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api-auth">API Auth</a><ul>
+<li><a class="reference internal" href="#get-api-jwt">Get API JWT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CERN.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/api.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -5,13 +5,15 @@
 {% set main_page = "browser_handling" %}
 {% block content %}
     <h1>Browser Handling</h1>
-    <table id="managed_browsers" class="highlight">
+    <table id="users" class="highlight">
         <thead>
         <tr>
-            <th data-field="browser">Browser</th>
-            <th data-field="version">Version</th>
-            <th data-field="os">Os</th>
-            <th data-field="disabled">Disabled</th>
+            <th data-field="browser">{{ _('Browser') }}</th>
+            <th data-field="version">{{ _('Version') }}</th>
+            <th data-field="os">{{ _('Os') }}</th>
+            <th data-field="disabled">{{ _('Allow version') }}</th>
+            <th data-field="lower_versions">{{ _('Lower versions') }}</th>
+            <th data-field="higher_versions">{{ _('Higher versions') }}</th>
             <th data-field="delete"></th>
         </tr>
         </thead>
@@ -24,21 +26,39 @@
                 </td>
                 <td>{{ managed_browser.version }}</td>
                 <td>
-                    {% for operating_system in managed_browser.operating_systems %}
-                        {{ operating_system.name }}
-                    {% endfor %}
+                    {% if managed_browser.operating_systems|length == 0 %}
+                        All
+                    {% else %}
+                        {% for operating_system in managed_browser.operating_systems %}
+                            {{ operating_system.name }}
+                        {% endfor %}
+                    {% endif %}
                 </td>
                 <td>
                     <div class="switch">
                         <label>
-                            Off
+                            {{ _('No') }}
                             <input type="checkbox" id="switch_{{ managed_browser.id }}"
                                    data-managed-browser="{{ managed_browser.id }}"
                                    {% if managed_browser.allow_version %}checked="checked"{% endif %}>
                             <span class="lever"></span>
-                            On
+                            {{ _('Yes') }}
                         </label>
                     </div>
+                </td>
+                <td>
+                    {% if managed_browser.allow_lower_versions %}
+                        <i class="material-icons green-text">check_circle</i>
+                    {% else %}
+                        <i class="material-icons red-text">remove_circle</i>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if managed_browser.allow_higher_versions %}
+                        <i class="material-icons green-text">check_circle</i>
+                    {% else %}
+                        <i class="material-icons red-text">remove_circle</i>
+                    {% endif %}
                 </td>
                 <td>
                     <a class="remove_managed_browser managed_browser_{{ managed_browser.id }}_trigger" href="#!"><i
@@ -61,8 +81,8 @@
 
             <form id="delete_managed_browser_{{ managed_browser.id }}_form" method="post" action=".">
                 <div class="modal-content">
-                    <h4>Delete managed browser</h4>
-                    <p>Are you sure you want to delete the managed browser
+                    <h4>{{ _('Delete managed browser') }}</h4>
+                    <p>{{ _('Are you sure you want to delete the managed browser') }}
                         <strong>{{ managed_browser.browser.name }} {{ managed_browser.version }}</strong></p>
                 </div>
                 <div class="modal-footer">
@@ -70,9 +90,10 @@
                     <input type="hidden" name="managed_browser_id" value="{{ managed_browser.id }}">
                     <button type="submit"
                             class=" modal-action waves-effect waves-green btn blue agree-button">
-                        Delete
+                        {{ _('Delete') }}
                     </button>
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    <a href="#!"
+                       class=" modal-action modal-close waves-effect waves-green btn-flat">{{ _('Cancel') }}</a>
                 </div>
 
 
@@ -88,7 +109,7 @@
 
             <form id="edit_managed_browser_form" method="post" action=".">
                 <div class="modal-content">
-                    <h4>Edit managed browser</h4>
+                    <h4>{{ _('Edit managed browser') }}</h4>
                     <div class="row">
                         <div class="input-field col s12">
                             {{ edit_managed_browser_form.csrf_token }}
@@ -100,7 +121,7 @@
                                             {% if managed_browser.browser_id == browser.id %}selected{% endif %}>{{ browser.name }}</option>
                                 {% endfor %}
                             </select>
-                            <label for="browser">Browser</label>
+                            <label for="browser">{{ _('Browser') }}</label>
                         </div>
                     </div>
 
@@ -109,26 +130,67 @@
                             <input name="edit_managed_browser_version" id="edit_managed_browser_version" type="text"
                                    class="validate" required=""
                                    aria-required="true" value="{{ managed_browser.version }}">
-                            <label for="version">Version</label>
+                            <label for="version">{{ _('Version') }}</label>
                         </div>
                     </div>
 
-                    <h5>Operating Systems</h5>
+                    <h5>{{ _('Operating Systems') }}</h5>
                     <p>
                         {{ render_multicheckbox_field(edit_managed_browser_form.edit_operating_systems, initial_values=managed_browser.operating_systems) }}
                     </p>
 
-                    <h5>Disabled</h5>
+                    <div class="row">
+                        <div class="col s4">
+                            <h6>{{ _('Allow this version') }}</h6>
 
-                    <div class="switch">
-                        <label>
-                            Off
-                            <input name="edit_managed_browser_disabled" id="edit_managed_browser_disabled"
-                                   type="checkbox"
-                                   {% if managed_browser.allow_version == true %}checked{% endif %}>
-                            <span class="lever"></span>
-                            On
-                        </label>
+                            <div class="switch">
+                                <label>
+                                    No
+                                    <input name="edit_managed_browser_allow_version"
+                                           id="edit_managed_browser_allow_version"
+                                           type="checkbox"
+                                           {% if managed_browser.allow_version == true %}checked{% endif %}>
+                                    <span class="lever"></span>
+                                    Yes
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col s4">
+                            <h6>{{ _('Allow lower versions') }}</h6>
+
+                            <div class="switch">
+                                <label>
+                                    No
+                                    <input name="edit_managed_browser_allow_lower_versions"
+                                           id="edit_managed_browser_allow_lower_versions"
+                                           type="checkbox"
+                                           {% if managed_browser.allow_lower_versions == true %}checked{% endif %}>
+                                    <span class="lever"></span>
+                                    Yes
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="col s4">
+                            <h6>{{ _('Allow higher versions') }}</h6>
+
+                            <div class="switch">
+                                <label>
+                                    No
+                                    <input name="edit_managed_browser_allow_higher_versions"
+                                           id="edit_managed_browser_allow_higher_versions"
+                                           type="checkbox"
+                                           {% if managed_browser.allow_higher_versions == true %}checked{% endif %}>
+                                    <span class="lever"></span>
+                                    Yes
+                                </label>
+                            </div>
+
+                        </div>
+
+
                     </div>
 
                     {{ render_hidden_field(edit_managed_browser_form.edit_managed_browser_id, managed_browser.id) }}
@@ -137,9 +199,10 @@
                 <div class="modal-footer">
                     <button type="submit" href="#!"
                             class=" modal-action waves-effect waves-green btn blue agree-button">
-                        Save
+                        {{ _('Save') }}
                     </button>
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    <a href="#!"
+                       class=" modal-action modal-close waves-effect waves-green btn-flat">{{ _('Cancel') }}</a>
                 </div>
 
 
@@ -155,7 +218,7 @@
 
         <form id="add_managed_browser_form" method="post" action=".">
             <div class="modal-content">
-                <h4>Add managed browser</h4>
+                <h4>{{ _('Add managed browser') }}</h4>
                 <div class="row">
                     <div class="input-field col s12">
                         {{ add_managed_browser_form.csrf_token }}
@@ -165,7 +228,7 @@
                                 <option value="{{ browser.id }}">{{ browser.name }}</option>
                             {% endfor %}
                         </select>
-                        <label for="browser">Browser</label>
+                        <label for="browser">{{ _('Browser') }}</label>
                     </div>
                 </div>
 
@@ -174,32 +237,69 @@
                         <input name="add_managed_browser_version" id="add_managed_browser_version" type="text"
                                class="validate" required=""
                                aria-required="true">
-                        <label for="version">Version</label>
+                        <label for="version">{{ _('Version') }}</label>
                     </div>
                 </div>
 
-                <h5>Operating Systems</h5>
+                <h5>{{ _('Operating Systems') }}</h5>
 
                 <p>
                     {{ add_managed_browser_form.add_operating_systems }}
                 </p>
 
-                <h5>Disabled</h5>
+                <div class="row">
+                    <div class="col s4">
+                        <h6>{{ _('Allow this version') }}</h6>
 
-                <div class="switch">
-                    <label>
-                        Off
-                        <input name="add_managed_browser_disabled" id="add_managed_browser_disabled" type="checkbox">
-                        <span class="lever"></span>
-                        On
-                    </label>
+                        <div class="switch">
+                            <label>
+                                No
+                                <input name="add_managed_browser_allow_version" id="add_managed_browser_allow_version"
+                                       type="checkbox">
+                                <span class="lever"></span>
+                                Yes
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col s4">
+                        <h6>{{ _('Allow lower versions') }}</h6>
+
+                        <div class="switch">
+                            <label>
+                                No
+                                <input name="add_managed_browser_allow_lower_versions"
+                                       id="add_managed_browser_allow_lower_versions" type="checkbox">
+                                <span class="lever"></span>
+                                Yes
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col s4">
+                        <h6>{{ _('Allow higher versions') }}</h6>
+
+                        <div class="switch">
+                            <label>
+                                No
+                                <input name="add_managed_browser_allow_higher_versions"
+                                       id="add_managed_browser_allow_higher_versions"
+                                       type="checkbox">
+                                <span class="lever"></span>
+                                Yes
+                            </label>
+                        </div>
+                    </div>
+
+
                 </div>
+
             </div>
             <div class="modal-footer">
                 <button type="submit" href="#!" class=" modal-action waves-effect waves-green btn blue agree-button">
-                    Save
+                    {{ _('Save') }}
                 </button>
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ _('Cancel') }}</a>
             </div>
 
 
@@ -238,11 +338,11 @@
 
                 $("#switch_{{ managed_browser.id }}").change(function () {
                     var switch_id = $(this).data("managed-browser");
-
-                    $.getJSON('/browser-handling/_switch_managed_browser_switch', {
+                    console.debug("Switch triggered " + switch_id);
+                    $.getJSON('{{ application_root }}/admin/browser-handling/_switch_managed_browser_switch', {
                         managed_browser_id: switch_id,
                     }, function (data) {
-                       console.debug(data);
+                        console.debug(data);
                     });
                 });
 

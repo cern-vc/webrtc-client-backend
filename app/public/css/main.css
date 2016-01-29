@@ -1,0 +1,57 @@
+header, main, footer {
+    padding-left: 240px;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
+
+.remove_managed_browser, .remove_user{
+    visibility: hidden;:
+}
+
+table.highlight>tbody>tr:hover .remove_managed_browser, table.highlight>tbody>tr:hover .remove_user{
+    visibility: visible;
+}
+
+ul.side-nav.fixed li a {
+    font-size: 13px;
+    line-height: 44px;
+    height: 44px;
+}
+
+.bold>a {
+    font-weight: bold;
+}
+
+.chip {
+    margin: 10px 5px;
+}
+
+.side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
+    background-color: #2196F3 !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #77BDDF !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #2196F3 !important;
+}
+
+.side-nav .side-nav-header i {
+    line-height: inherit;
+    width: 2rem;
+    font-size: 1.6rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+#messages-wrap .chip{
+    width: 100%;
+}

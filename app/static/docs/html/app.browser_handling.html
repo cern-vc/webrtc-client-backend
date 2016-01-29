@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>app.browser_handling package &mdash; WebRTC Client Backend 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="WebRTC Client Backend 1.0 documentation" href="index.html" />
+    <link rel="up" title="app package" href="app.html" />
+    <link rel="prev" title="app.api_auth package" href="app.api_auth.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="app-browser-handling-package">
+<h1>app.browser_handling package<a class="headerlink" href="#app-browser-handling-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.browser_handling.forms">
+<span id="app-browser-handling-forms-module"></span><h2>app.browser_handling.forms module<a class="headerlink" href="#module-app.browser_handling.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.browser_handling.forms.AddBrowserForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">AddBrowserForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.AddBrowserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to add a Browser</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddBrowserForm.browser_name">
+<code class="descname">browser_name</code><em class="property"> = &lt;UnboundField(StringField, ('Name', [&lt;wtforms.validators.DataRequired object at 0x10dceb750&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddBrowserForm.browser_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">AddManagedBrowserForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to add a new ManagedBrowser</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_allow_higher_versions">
+<code class="descname">add_managed_browser_allow_higher_versions</code><em class="property"> = &lt;UnboundField(BooleanField, ('Allow higher versions',), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_allow_higher_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_allow_lower_versions">
+<code class="descname">add_managed_browser_allow_lower_versions</code><em class="property"> = &lt;UnboundField(BooleanField, ('Allow lower versions',), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_allow_lower_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_allow_version">
+<code class="descname">add_managed_browser_allow_version</code><em class="property"> = &lt;UnboundField(BooleanField, ('Allow Version',), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_allow_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_id">
+<code class="descname">add_managed_browser_id</code><em class="property"> = &lt;UnboundField(IntegerField, ('Browser Name', [&lt;wtforms.validators.DataRequired object at 0x10dceb910&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_version">
+<code class="descname">add_managed_browser_version</code><em class="property"> = &lt;UnboundField(StringField, ('Version', [&lt;wtforms.validators.DataRequired object at 0x10dceb9d0&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm.add_managed_browser_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddManagedBrowserForm.add_operating_systems">
+<code class="descname">add_operating_systems</code><em class="property"> = &lt;UnboundField(MultiCheckboxField, ('Operating Systems',), {'coerce': &lt;type 'int'&gt;, 'choices': []})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddManagedBrowserForm.add_operating_systems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.AddOperatingSystemForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">AddOperatingSystemForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.AddOperatingSystemForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to add an OperatingSystem</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.AddOperatingSystemForm.operating_system_name">
+<code class="descname">operating_system_name</code><em class="property"> = &lt;UnboundField(StringField, ('Name', [&lt;wtforms.validators.DataRequired object at 0x10dceb6d0&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.AddOperatingSystemForm.operating_system_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.CheckboxListWidget">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">CheckboxListWidget</code><span class="sig-paren">(</span><em>prefix_label=True</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.CheckboxListWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Renders a list of fields as a <cite>ul</cite> or <cite>ol</cite> list.</p>
+<p>This is used for fields which encapsulate many inner fields as subfields.
+The widget will try to iterate the field to get access to the subfields and
+call them to render them.</p>
+<p>If <cite>prefix_label</cite> is set, the subfield&#8217;s label is printed before the field,
+otherwise afterwards. The latter is useful for iterating radios or
+checkboxes.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.DeleteBrowserForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">DeleteBrowserForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.DeleteBrowserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to delete a browser</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.DeleteBrowserForm.browser_id">
+<code class="descname">browser_id</code><em class="property"> = &lt;UnboundField(HiddenField, ('Browser ID', [&lt;wtforms.validators.DataRequired object at 0x10dceb850&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.DeleteBrowserForm.browser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.DeleteManagedBrowserForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">DeleteManagedBrowserForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.DeleteManagedBrowserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to delete a ManagedBrowser</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.DeleteManagedBrowserForm.managed_browser_id">
+<code class="descname">managed_browser_id</code><em class="property"> = &lt;UnboundField(HiddenField, ('Managed Browser ID', [&lt;wtforms.validators.DataRequired object at 0x10dc804d0&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.DeleteManagedBrowserForm.managed_browser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.DeleteOperatingSystemForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">DeleteOperatingSystemForm</code><span class="sig-paren">(</span><em>formdata=&lt;class flask_wtf.form._Auto&gt;</em>, <em>obj=None</em>, <em>prefix=''</em>, <em>csrf_context=None</em>, <em>secret_key=None</em>, <em>csrf_enabled=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.DeleteOperatingSystemForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to delete an OperatingSystem</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.DeleteOperatingSystemForm.operating_system_id">
+<code class="descname">operating_system_id</code><em class="property"> = &lt;UnboundField(HiddenField, ('Operating System ID', [&lt;wtforms.validators.DataRequired object at 0x10dceb7d0&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.DeleteOperatingSystemForm.operating_system_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">EditManagedBrowserForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.Form</span></code></p>
+<p>Form to edit an existing ManagedBrowser</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_allow_higher_versions">
+<code class="descname">edit_managed_browser_allow_higher_versions</code><em class="property"> = &lt;UnboundField(BooleanField, ('Allow higher versions',), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_allow_higher_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_allow_lower_versions">
+<code class="descname">edit_managed_browser_allow_lower_versions</code><em class="property"> = &lt;UnboundField(BooleanField, ('Allow lower versions',), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_allow_lower_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_browser_id">
+<code class="descname">edit_managed_browser_browser_id</code><em class="property"> = &lt;UnboundField(HiddenField, ('Managed Browser ID', [&lt;wtforms.validators.DataRequired object at 0x10dcebc90&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_browser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_disabled">
+<code class="descname">edit_managed_browser_disabled</code><em class="property"> = &lt;UnboundField(BooleanField, ('Allow Version',), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_disabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_id">
+<code class="descname">edit_managed_browser_id</code><em class="property"> = &lt;UnboundField(IntegerField, ('Browser ID', [&lt;wtforms.validators.DataRequired object at 0x10dcebd10&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_version">
+<code class="descname">edit_managed_browser_version</code><em class="property"> = &lt;UnboundField(StringField, ('Version', [&lt;wtforms.validators.DataRequired object at 0x10dcebd90&gt;]), {})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_managed_browser_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.EditManagedBrowserForm.edit_operating_systems">
+<code class="descname">edit_operating_systems</code><em class="property"> = &lt;UnboundField(MultiCheckboxField, ('Operating Systems',), {'coerce': &lt;type 'int'&gt;, 'choices': []})&gt;</em><a class="headerlink" href="#app.browser_handling.forms.EditManagedBrowserForm.edit_operating_systems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.forms.MultiCheckboxField">
+<em class="property">class </em><code class="descclassname">app.browser_handling.forms.</code><code class="descname">MultiCheckboxField</code><span class="sig-paren">(</span><em>label=None</em>, <em>validators=None</em>, <em>coerce=&lt;type 'unicode'&gt;</em>, <em>choices=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.MultiCheckboxField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">wtforms.fields.core.SelectMultipleField</span></code></p>
+<p>Multi Checkbox field</p>
+<dl class="attribute">
+<dt id="app.browser_handling.forms.MultiCheckboxField.option_widget">
+<code class="descname">option_widget</code><em class="property"> = &lt;wtforms.widgets.core.CheckboxInput object&gt;</em><a class="headerlink" href="#app.browser_handling.forms.MultiCheckboxField.option_widget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.forms.MultiCheckboxField.widget">
+<code class="descname">widget</code><em class="property"> = &lt;app.browser_handling.forms.CheckboxListWidget object&gt;</em><a class="headerlink" href="#app.browser_handling.forms.MultiCheckboxField.widget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_browser_add">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_browser_add</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_browser_add" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the submission of a new Browser</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>form</strong> &#8211; The form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if is valid or the form if it is not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_browser_delete">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_browser_delete</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_browser_delete" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the deletion of a Browser</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>add_browser_form</strong> &#8211; The form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if is valid or the form if it is not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_managed_browser_add">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_managed_browser_add</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_managed_browser_add" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the submission of a new ManagedBrowser</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>form</strong> &#8211; The form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the ManagedBrowser was added or the form if it is not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_managed_browser_delete_form">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_managed_browser_delete_form</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_managed_browser_delete_form" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the deletion of a ManagedBrowser</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>form</strong> &#8211; Form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the ManagedBrowser was deleted or the form if it is not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_managed_browser_edit">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_managed_browser_edit</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_managed_browser_edit" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the updating of a ManagedBrowser</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>form</strong> &#8211; Form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the ManagedBrowser was updated or the form if it is not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_operating_system_add">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_operating_system_add</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_operating_system_add" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the submission of a new OperatingSystem</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>add_os_form</strong> &#8211; The form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if is valid or the form</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.forms.process_operating_system_delete">
+<code class="descclassname">app.browser_handling.forms.</code><code class="descname">process_operating_system_delete</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.forms.process_operating_system_delete" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Handles the deletion of an OperatingSystem</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>form</strong> &#8211; The form to process</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if is valid or the form if it is not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.browser_handling.models">
+<span id="app-browser-handling-models-module"></span><h2>app.browser_handling.models module<a class="headerlink" href="#module-app.browser_handling.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.browser_handling.models.Browser">
+<em class="property">class </em><code class="descclassname">app.browser_handling.models.</code><code class="descname">Browser</code><span class="sig-paren">(</span><em>name=None</em>, <em>disabled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.models.Browser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<dl class="attribute">
+<dt id="app.browser_handling.models.Browser.disabled">
+<code class="descname">disabled</code><a class="headerlink" href="#app.browser_handling.models.Browser.disabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.Browser.id">
+<code class="descname">id</code><a class="headerlink" href="#app.browser_handling.models.Browser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.Browser.managed_browsers">
+<code class="descname">managed_browsers</code><a class="headerlink" href="#app.browser_handling.models.Browser.managed_browsers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.Browser.name">
+<code class="descname">name</code><a class="headerlink" href="#app.browser_handling.models.Browser.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.models.ManagedBrowser">
+<em class="property">class </em><code class="descclassname">app.browser_handling.models.</code><code class="descname">ManagedBrowser</code><span class="sig-paren">(</span><em>browser_id=False</em>, <em>version=''</em>, <em>allow_version=False</em>, <em>allow_lower_versions=False</em>, <em>allow_higher_versions=True</em>, <em>operating_systems=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>A ManagedBrowser is a combination of Browsers and OperatingSystems with versions.
+It will tell the browser_handling API which browser versions are allowed or not.</p>
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.allow_higher_versions">
+<code class="descname">allow_higher_versions</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.allow_higher_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.allow_lower_versions">
+<code class="descname">allow_lower_versions</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.allow_lower_versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.allow_version">
+<code class="descname">allow_version</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.allow_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.browser_id">
+<code class="descname">browser_id</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.browser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.id">
+<code class="descname">id</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.operating_systems">
+<code class="descname">operating_systems</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.operating_systems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.ManagedBrowser.version">
+<code class="descname">version</code><a class="headerlink" href="#app.browser_handling.models.ManagedBrowser.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.browser_handling.models.OperatingSystem">
+<em class="property">class </em><code class="descclassname">app.browser_handling.models.</code><code class="descname">OperatingSystem</code><span class="sig-paren">(</span><em>name=None</em>, <em>disabled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.models.OperatingSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></code></p>
+<p>Operating System</p>
+<dl class="attribute">
+<dt id="app.browser_handling.models.OperatingSystem.disabled">
+<code class="descname">disabled</code><a class="headerlink" href="#app.browser_handling.models.OperatingSystem.disabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.OperatingSystem.id">
+<code class="descname">id</code><a class="headerlink" href="#app.browser_handling.models.OperatingSystem.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.browser_handling.models.OperatingSystem.name">
+<code class="descname">name</code><a class="headerlink" href="#app.browser_handling.models.OperatingSystem.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.browser_handling.views">
+<span id="app-browser-handling-views-module"></span><h2>app.browser_handling.views module<a class="headerlink" href="#module-app.browser_handling.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.browser_handling.views.configuration">
+<code class="descclassname">app.browser_handling.views.</code><code class="descname">configuration</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.views.configuration" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>View to manage the browsers and the operating systems.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.browser_handling.views.list_all">
+<code class="descclassname">app.browser_handling.views.</code><code class="descname">list_all</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.browser_handling.views.list_all" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Managed Browsers list</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.browser_handling">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app.browser_handling" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">app.browser_handling package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-app.browser_handling.forms">app.browser_handling.forms module</a></li>
+<li><a class="reference internal" href="#module-app.browser_handling.models">app.browser_handling.models module</a></li>
+<li><a class="reference internal" href="#module-app.browser_handling.views">app.browser_handling.views module</a></li>
+<li><a class="reference internal" href="#module-app.browser_handling">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">app</a><ul>
+  <li><a href="app.html">app package</a><ul>
+      <li>Previous: <a href="app.api_auth.html" title="previous chapter">app.api_auth package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/app.browser_handling.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CERN.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/app.browser_handling.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
