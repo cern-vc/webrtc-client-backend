@@ -1,4 +1,8 @@
-# Backend for CERN WebRTC Client
+# CERN WebRTC Vidyo Client Backend
+
+[![Build Status](https://travis-ci.org/cern-vidyo/webrtc-client-backend.svg?branch=master)](https://travis-ci.org/cern-vidyo/webrtc-client-backend) 
+
+|license|
 
 This application handles the backend for the WebRTC client, providing an API and an authentication system.
 
