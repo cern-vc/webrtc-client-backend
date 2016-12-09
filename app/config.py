@@ -14,6 +14,10 @@ class BaseConfig(object):
     CERN_OAUTH_CLIENT_ID = os.environ['CERN_OAUTH_CLIENT_ID']
     CERN_OAUTH_CLIENT_SECRET = os.environ['CERN_OAUTH_CLIENT_SECRET']
 
+    API_OAUTH_CLIENT_ID = os.environ['API_OAUTH_CLIENT_ID']
+    API_OAUTH_CLIENT_SECRET = os.environ['API_OAUTH_CLIENT_SECRET']
+    API_OAUTH_REDIRECT_URL = os.environ['API_OAUTH_REDIRECT_URL']
+
     DB_NAME = os.environ['DB_NAME']
     DB_PASS = os.environ['DB_PASS']
     DB_PORT = os.environ['DB_PORT']

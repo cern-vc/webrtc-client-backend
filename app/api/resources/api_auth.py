@@ -19,9 +19,9 @@ def _get_token_serializer():
 
 
 def _get_oauth2_identity(auth_code):
-    client_id = current_app.config.get('OAUTH2_CLIENT_ID')
-    client_secret = current_app.config.get('OAUTH2_CLIENT_SECRET')
-    redirect_url = current_app.config.get('OAUTH2_REDIRECT_URL')
+    client_id = current_app.config.get('API_OAUTH_CLIENT_ID')
+    client_secret = current_app.config.get('API_OAUTH_CLIENT_SECRET')
+    redirect_url = current_app.config.get('API_OAUTH_REDIRECT_URL')
     info = ""
     if not client_id:
         # Error - No OAuth2 client id configured
