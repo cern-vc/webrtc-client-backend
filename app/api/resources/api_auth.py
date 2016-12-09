@@ -171,7 +171,7 @@ class ReauthApi(Resource):
             abort(401)
         try:
             token_data = _get_token_serializer().loads(
-                token, max_age=current_app.config['_MAX_TOKEN_AGE'])
+                token, max_age=current_app.config['TOKEN_EXPIRATION_SECONDS'])
         except BadSignature:
             abort(401)
 
