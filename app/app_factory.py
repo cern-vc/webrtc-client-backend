@@ -50,7 +50,7 @@ def create_app(config_filename):
     application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     application.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = False
 
-    cache.init_app(application)
+    # cache.init_app(application)
 
     with application.app_context():
         for module in application.config.get('DB_MODELS_IMPORTS', list()):
