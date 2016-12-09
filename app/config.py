@@ -17,6 +17,7 @@ class BaseConfig(object):
     API_OAUTH_CLIENT_ID = os.environ['API_OAUTH_CLIENT_ID']
     API_OAUTH_CLIENT_SECRET = os.environ['API_OAUTH_CLIENT_SECRET']
     API_OAUTH_REDIRECT_URL = os.environ['API_OAUTH_REDIRECT_URL']
+    TOKEN_EXPIRATION_SECONDS = os.environ['TOKEN_EXPIRATION_SECONDS']
 
     DB_NAME = os.environ['DB_NAME']
     DB_PASS = os.environ['DB_PASS']
