@@ -18,8 +18,8 @@ def load_cern_oauth(app):
         __name__,
         url_prefix='/oauth',
         # oauth specific settings
-        token_url=os.environ['CERN_OAUTH_AUTHORIZE_URL'],
-        authorization_url=os.environ['CERN_OAUTH_TOKEN_URL'],
+        token_url=os.environ['CERN_OAUTH_TOKEN_URL'],
+        authorization_url=os.environ['CERN_OAUTH_AUTHORIZE_URL'],
         # local urls
         login_url='/cern',
         authorized_url='/cern/authorized',
